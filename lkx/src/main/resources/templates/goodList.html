@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>查看用户信息</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/lib/css/homepage.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div th:include="../static/common/headbar::headbar"></div>
+<div th:include="./detail_admin::homepage"></div>
+
+<div class="panel panel-default" style="width: 90%;margin-left: 5%">
+    <div class="panel-heading">
+        <h3 class="panel-title" style="text-align:center">商品信息</h3>
+    </div>
+    <div class="panel-body">
+        <table class="table table-hover" style="text-align:center">
+            <thead>
+            <tr>
+                <th>名称</th>
+                <th>图片</th>
+                <th>价格</th>
+                <th>状态</th>
+                <th>描述</th>
+                <th>容量</th>
+                <th>评价</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="goodlist: ${list}">
+                <td th:text="${goodlist.name}"></td>
+                <!--                <td th:="${userlist.url}"></td>-->
+                <td><img th:src="@{${goodlist.images}}"/></td>
+
+                <td th:text="${goodlist.price}"></td>
+                <td th:text="${goodlist.stock}"></td>
+                <td th:text="${goodlist.detail}"></td>
+                <td th:text="${goodlist.parameter}"></td>
+                <td th:text="${goodlist.service}"></td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="/static/lib/js/check.js"></script>
+</body>
+</html>
